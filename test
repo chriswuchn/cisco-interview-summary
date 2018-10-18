@@ -29,6 +29,8 @@ int main()
 	char s[100];
 	//gets_s(s);
 	gets_s(s);
+	//getline(cin,str);
+	//note:cin>>s有问题，碰到NULL会停下来
 	int arraysum[61] = {0};
 	for (int i = 0; i < 100; ++i)
 	{
