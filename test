@@ -25,7 +25,8 @@ int main()
 	//char s[100];
 	//gets(s);
 	getline(cin,str);
-	//note:cin>>s有问题，碰到NULL会停下来
+	//note:cin>>s有问题，碰到NULL会停下来	
+	while(cin>>s){}不会跳出来，只有按了enter+Ctrl+z（windows）+enter才会跳出来；这样可以储蓄输入和计算
 	int arraysum[256] = {0};
 	for (int i = 0; i < s.length(); ++i)
 	{
