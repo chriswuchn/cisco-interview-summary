@@ -1,0 +1,58 @@
+1、真题
+python解法：
+if __name__=='__main__':
+    flag=False
+    keydict={}
+    string=input()
+    for s in string:
+        if s in set(keydict):
+            if s.isalpha() or s.isdigit():
+                keydict[s]+=1
+        else:
+            keydict[s]=1
+        for i,v in keydict.items():
+            if v>=3:
+                flag=True
+                print(i)
+                break
+        if flag==True:
+            break
+            
+C++解法
+#include <stdio.h>
+#include <string>
+#include <iostream>
+using namespace std;
+int main()
+{
+	//string s;
+	char s[100];
+	//gets_s(s);
+	gets_s(s);
+	int arraysum[61] = {0};
+	for (int i = 0; i < 100; ++i)
+	{
+		if (s[i] >= 0 && s[i] < 10)
+			arraysum[s[i]]++;
+		else if (s[i] >= 'A' && s[i] <= 'Z')
+			arraysum[s[i]-'A'+10]++;
+		else if (s[i] >= 'a' && s[i] <= 'z')
+			arraysum[s[i] - 'a' + 36]++;
+		else
+			;
+		for (int j = 0; j < 61; j++)
+		{
+			if (arraysum[j] >= 3)
+			{
+				if (j >= 0 && j < 10)
+					cout << int(j) << endl;
+				else if (j >= 10 && j < 36)
+					cout << char(j - 10 + 'A') << endl;
+				else
+					cout << char(j - 36 + 'a') << endl;
+				return 0;
+			}
+		}		
+	}
+	return 0;
+}
