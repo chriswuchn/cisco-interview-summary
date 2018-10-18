@@ -1,22 +1,18 @@
 1、真题给定一个英文字符串,请写一段代码找出这个字符串中首先出现三次的那个英文字符(需要区分大小写)。
 python解法：
 if __name__=='__main__':
-    flag=False
     keydict={}
     string=input()
-    for s in string:
-        if s in set(keydict):
-            if s.isalpha() or s.isdigit():
+    for s in string:  
+        if s.isalpha() or s.isdigit():
+            if s in set(keydict):
                 keydict[s]+=1
-        else:
-            keydict[s]=1
-        for i,v in keydict.items():
-            if v>=3:
-                flag=True
-                print(i)
-                break
-        if flag==True:
-            break
+                if(keydict[s]>=3):
+                    print(s)                   
+                    break
+            else:
+                keydict[s]=1
+  
             
 C++解法
 #include <stdio.h>
@@ -25,36 +21,20 @@ C++解法
 using namespace std;
 int main()
 {
-	//string s;
-	char s[100];
-	//gets_s(s);
-	gets_s(s);
-	//getline(cin,str);
+	string s;
+	//char s[100];
+	//gets(s);
+	getline(cin,str);
 	//note:cin>>s有问题，碰到NULL会停下来
-	int arraysum[61] = {0};
-	for (int i = 0; i < 100; ++i)
+	int arraysum[256] = {0};
+	for (int i = 0; i < s.length(); ++i)
 	{
-		if (s[i] >= 0 && s[i] < 10)
-			arraysum[s[i]]++;
-		else if (s[i] >= 'A' && s[i] <= 'Z')
-			arraysum[s[i]-'A'+10]++;
-		else if (s[i] >= 'a' && s[i] <= 'z')
-			arraysum[s[i] - 'a' + 36]++;
-		else
-			;
-		for (int j = 0; j < 61; j++)
-		{
-			if (arraysum[j] >= 3)
-			{
-				if (j >= 0 && j < 10)
-					cout << int(j) << endl;
-				else if (j >= 10 && j < 36)
-					cout << char(j - 10 + 'A') << endl;
-				else
-					cout << char(j - 36 + 'a') << endl;
-				return 0;
+		if( ++arraysum[str[i]] == 3){
+            		if(str[i] >= 'a' && str[i] <= 'z' || str[i] >= 'A' && str[i] <= 'Z'){
+               			cout<<str[i]<<endl;
+                		break;
 			}
-		}		
-	}
+            }
+        }
 	return 0;
 }
