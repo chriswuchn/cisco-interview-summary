@@ -45,6 +45,7 @@ c.  外围设备的中断
 	int *p = a;
 	cout << *(p+1) << endl; //p地址向前挪了四位
    输出2
-
+3、char a[10]; sizeof(a)=10;
+  char *p=a; sizeof(p)=4;
 
 
