@@ -47,5 +47,6 @@ c.  外围设备的中断
    输出2
 3、char a[10]; sizeof(a)=10;
   char *p=a; sizeof(p)=4;
-
-
+a
+4、void hello(char a[])等价于 void hello（char *a)
+ 
