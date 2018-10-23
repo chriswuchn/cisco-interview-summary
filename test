@@ -41,7 +41,7 @@ int main()
 	return 0;
 }
 
-3、单向链表旋转问题
+3、单向链表翻转问题（关键就是创建两个指针，一前一后）
 #include "stdafx.h"
 #include <iostream>
 #include <stdio.h>
