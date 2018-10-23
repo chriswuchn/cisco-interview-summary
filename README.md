@@ -47,6 +47,30 @@ c.  外围设备的中断
    输出2
 3、char a[10]; sizeof(a)=10;
   char *p=a; sizeof(p)=4;
-a
 4、void hello(char a[])等价于 void hello（char *a)
+
+
+二面题：
+1、条件变量用法举例？
+   条件变量通常和互斥量一起使用:原因互斥锁的保护下使用相应的条件变量。否则对条件变量的解锁有可能发生在锁定条件变量之前，从而造成死锁
+   pthread_mutex_t fill_mutex=PTHREAD_MUTEX_INITIALIZER;
+   pthread_cond_t cond_var=PTHREAD_COND_INITIALIZER;
+  线程A:pthread_mutex_lock(&fill_mutex); 
+	pthread_cond_signal(&cond_var); or pthread_cond_broadcast(&cond_var);
+	pthread_mutex_unlock(&fill_mutex);
+  线程B:pthread_mutex_lock(&fill_mutex);
+  	while(condition_is_false)	
+		pthread_cond_wait(&cond_var,&fill_mutex);
+	pthread_mutex_unlock(&fill_mutex);
+
+2、线程安全：在同一个时间点，函数可以被不同线程安全的调用。返回数据存放在内存缓存区中不是线程安全的。
+   可重入的函数一般是线程安全的。
+   
+   
+
+ 
+
+
+
+
  
