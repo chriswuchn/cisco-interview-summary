@@ -40,3 +40,75 @@ int main()
         }
 	return 0;
 }
+
+3、单向链表旋转问题
+#include "stdafx.h"
+#include <iostream>
+#include <stdio.h>
+#include <assert.h>
+
+using namespace std;
+template<class T>
+struct node
+{
+	T data;
+	struct node<T> *next;
+};
+
+
+template<class T>
+node<T> *create_list(int len)
+{
+	assert(len >= 1);
+	node<T> *head=new node<T>;
+	T data;
+	cin >> data;
+	head->data = data;
+	node<T> *tmp=head;
+	for (int i = 0; i < len-1; i++)
+	{
+		node<T> *p=new node<T>;
+		T data;
+		cin >> data;
+		p->data = data;
+		tmp->next = p;
+		tmp = tmp->next;
+		cout << p->data << endl;
+	}
+	tmp->next = NULL;
+	return head;
+}
+
+template<class T>
+void delete_list(node<T> *head)
+{
+	node<T> *tmp = head;
+	while (tmp->next != NULL)
+	{
+		node<T> *p = tmp;
+		tmp = tmp->next;
+		delete p;		
+	}
+}
+
+template<class T>
+node<T>* reverse_list(node<T> *head)
+{
+	node<T> *tmp1 = head;
+	node<T> *tmp2 = head->next;
+	if (tmp2 == NULL)
+	{
+		return head;
+	}
+	while (tmp2->next != NULL)
+	{
+		node<T>*p= tmp2->next;
+	    tmp2->next= tmp1;
+	    tmp1 = tmp2;
+		tmp2=p;
+	}
+	tmp2->next=tmp1;
+	head->next = NULL;
+	return tmp2;
+}
+
