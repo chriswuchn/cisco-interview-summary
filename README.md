@@ -1,5 +1,5 @@
 C++
-# cisco-interview-summary
+#interview-summary
 1、malloc和new,free和delete区别
 2、内存分类（堆、栈、text程序段，texy，全局数据段）
 3、static作用（普通变量前加static,函数前加static,成员函数前加staic,第三种也就是静态成员函数成员函数和普通成员函数区别，静态成员变量和普通成员变量区别）
@@ -98,6 +98,18 @@ c.  外围设备的中断
 		 高性能读写;基于键值对，无耦合；存储形式丰富，键 - 值对存储，列存储，文档存储，图形数据库
 		 缺点：
 		 不支持sql
+
+C++中函数签名不包括函数返回值，但是包括函数后的const的，也就是说重载的时候，仅凭函数返回值不同编译器是不区别的，也就是不行的，但是有无const是可以的，编译器区别的。
+第一组：编译器报错
+int fun(int a,int b)()
+char fun(int a,int b){}
+第二组：可以编译通过
+int fun(int a,int b)
+int fun(int a,int b) const
+
+
+
+
 
 
  
